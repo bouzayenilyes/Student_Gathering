@@ -1,0 +1,48 @@
+{
+  "routes": [
+    {
+      "src": "/manifest.json",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "application/manifest+json"
+      }
+    },
+    {
+      "src": "/sw.js",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Service-Worker-Allowed": "/",
+        "Content-Type": "text/javascript"
+      }
+    },
+    {
+      "src": "/icons/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
+      ]
+    }
+  ]
+} 
